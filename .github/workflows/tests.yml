@@ -243,18 +243,3 @@ jobs:
       - name: Tests
         run: GITHUB_ACTION=true GORM_DIALECT=tidb GORM_DSN="root:@tcp(localhost:9940)/test?charset=utf8&parseTime=True&loc=Local" ./tests/tests_all.sh
 
-coverage:
-  - name: Test
-    run: go test -v ./...
-
-  - name: Update coverage report
-    uses: ncruces/go-coverage-report@v0
-    with:
-      report: true
-      chart: true
-      amend: true
-      reuse-go: true
-    if: |
-      matrix.os == 'ubuntu-latest' &&
-      github.event_name == 'push'
-    continue-on-error: true -m coverage report'
