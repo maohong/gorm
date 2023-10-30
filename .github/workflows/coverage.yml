@@ -1,6 +1,14 @@
 on: workflow_dispatch
+
 jobs:
   coverage:
+    strategy:
+      matrix:
+        go: [ '1.21', '1.20', '1.19' ]
+        platform: [ ubuntu-latest ] # can not run in windows OS
+    runs-on: ${{ matrix.platform }}
+
+    steps:
     - name: Test
       run: go test -v ./...
 
