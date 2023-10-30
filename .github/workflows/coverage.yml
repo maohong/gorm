@@ -1,6 +1,8 @@
 on: workflow_dispatch
+
 jobs:
   coverage:
+    steps:
     - name: Test
       run: go test -v ./...
 
