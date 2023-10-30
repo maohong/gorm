@@ -81,6 +81,12 @@ jobs:
     - name: Tests
       run: GITHUB_ACTION=true GORM_DIALECT=mysql GORM_DSN="gorm:gorm@tcp(localhost:9910)/gorm?charset=utf8&parseTime=True" ./tests/tests_all.sh
 
+    - uses: actions/checkout@v3
+    - name: Code coverage-reporter
+    uses: tj-actions/coverage-reporter@v5.1
+    with:
+      coverage-command: 'python -m coverage report'
+
   mariadb:
     strategy:
       matrix:
