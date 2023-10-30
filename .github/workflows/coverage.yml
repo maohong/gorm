@@ -10,7 +10,7 @@ jobs:
 
     steps:
     - name: Test
-      run: go test -v ./...
+      run: go test -v github.com/maohong/gorm/...
 
     - name: Update coverage report
       uses: ncruces/go-coverage-report@v0
